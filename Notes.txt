@@ -1,0 +1,26 @@
+King Maze Notes:
+Goals:
+	1. Create a blank chess board
+	2. Create the pieces
+	3. Distinguish White and Black pieces
+	4. Setup an FEN reader
+	5. Allow gamepaly, captures and moves
+	6. Add stalemate and checkmate rules
+	7. Incorporate basic search tree
+	8. Setup UI
+	9. Adapt chess engine search algorithm for better search tree and be able to solve game
+	10. Write basic AI to look for newlonger problems
+	11. Create GUI for game
+
+Classes:
+	1. Main
+	2. KingConsole
+	3. KingEngine
+	4. Pieces
+		i. Rook
+		ii. Bishop
+		iii. Knight
+		iv. Queen
+		v. Pawn
+		vi. King
+	5. Board/Square
