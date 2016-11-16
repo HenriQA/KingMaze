@@ -26,16 +26,16 @@ RUN rm eclipse-jee-neon-1a-linux-gtk-x86_64.tar.gz
 RUN touch ~/.vimrc
 RUN echo "filetype plugin indent on" >> ~/.vimrc
 #Configure Eclim
-WORKDIR /home/
 RUN git clone git://github.com/ervandew/eclim.git
 ENV JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
-RUN sed -i.bak -e '30,40d' /home/eclim/ant/build.gant
-WORKDIR /home/eclim/
+RUN sed -i.bak -e '30,40d' /opt/eclim/ant/build.gant
+WORKDIR /opt/eclim/
 RUN ant -Declipse.home=/opt/eclipse/
 RUN ant vimdocs -Declipse.home=/opt/eclipse/
 RUN sed -i.bak -e '18,22d' /opt/eclipse/eclimd
-COPY startup.sh /home/
-RUN chmod +x /home/startup.sh
-WORKDIR /home/
+COPY startup.sh /opt/
+RUN chmod +x /opt/startup.sh
+RUN mkdir -p /home/Git_Projects
+WORKDIR /home/Git_Projects/
 RUN git clone https://github.com/HenriQA/KingMaze.git
-ENTRYPOINT /home/startup.sh
+ENTRYPOINT /opt/startup.sh
