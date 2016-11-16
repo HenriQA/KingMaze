@@ -33,6 +33,9 @@ WORKDIR /home/eclim/
 RUN ant -Declipse.home=/home/eclipse/
 RUN ant vimdocs -Declipse.home=/home/eclipse/
 RUN sed -i.bak -e '18,22d' /home/eclipse/eclimd
-ENTRYPOINT bash
-ENTRYPOINT Xvfb :1 -screen 0 1024x768x24 & DISPLAY=:1 /home/eclipse/eclipse -clean -nosplash -consolelog -debug -application org.eclipse.equinox.p2.director -repository http://download.eclipse.org/releases/juno -installIU org.eclipse.wst.web_ui.feature.feature.group && DISPLAY=:1 /home/eclipse/eclimd
+COPY startup.sh /home/
+RUN chmod +x /home/startup.sh
+WORKDIR /home/
+ENTRYPOINT /home/startup.sh
+ry http://download.eclipse.org/releases/juno -installIU org.eclipse.wst.web_ui.feature.feature.group && DISPLAY=:1 /home/eclipse/eclimd
 
