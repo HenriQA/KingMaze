@@ -38,5 +38,3 @@ RUN chmod +x /home/startup.sh
 WORKDIR /home/
 RUN git clone https://github.com/HenriQA/KingMaze.git
 ENTRYPOINT /home/startup.sh
-ry http://download.eclipse.org/releases/juno -installIU org.eclipse.wst.web_ui.feature.feature.group && DISPLAY=:1 /home/eclipse/eclimd
-
